@@ -50,7 +50,6 @@ export const LinhaTr = styled.tr`
   border-collapse: collapse;
   border-spacing: 0px , 0px;
   font-size: 21px;
-
 `;
 export const ColunaTd = styled.td`
     width: 200px;
@@ -87,7 +86,7 @@ export const CabecalhoTh = styled.th`
   background-color: rgba(3, 3, 247, 0.411); 
 `;
 
-export const Entradas = styled.input`
+export const Input = styled.input`
     width: 193px;
   height: 28px;
   text-align: center;
@@ -109,4 +108,18 @@ export const Gravar = styled.button`
         cursor: pointer;
     }
 `;
+export const Botaoexcluir = styled.button`
+    width: 100px;
+    height: 27px;
+    background-color: rgba(3, 3, 247, 0.411); 
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 20px;
+    &:hover {
+        background-color: rgba(3, 3, 247, 0.611); 
+        cursor: pointer;
+    }
+`;
+
 

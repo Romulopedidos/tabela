@@ -1,68 +1,129 @@
-import React, {useState} from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 
 import * as s from './Styled'
 
-// import './App.css';
-
 export default function TabelaItens() {
-  const [peca , setPeca ] = useState(['Notbook', 'Monitor (29 Pol)' , 'Monitor/TV (32Pol)' , 'Mouse' , 'Teclado' , 
-  'Cadeira Gamer' ,  'Google Nest' ,'Alexa' ,'Fita LED' ,'Lampada LED' , 'Movel', 'Cabo HDMI' ,
-  'Suport Cel' ,
-  ])
-  
-  
+  let dadosSalvo = localStorage.getItem('peca');
+  console.log(dadosSalvo)
+
+  const [peca, setPeca] = useState(JSON.parse(dadosSalvo))
+
+
+
+  function excluir() {
+    localStorage.removeItem('peca')
+    setPeca([])
+
+
+  }
+
+  function armazenar() {
+
+    let npeca = document.getElementById("npeca").value;
+    let npreco = document.getElementById("npreco").value;
+    let qtd = document.getElementById("qtd").value;
+    let pp = document.getElementById("pp").value;
+    let credor = document.getElementById("credor").value;
+
+
+    let arrauObjetos = [];
+
+    let dados = {
+
+      npeca: npeca,
+      npreco: npreco,
+      qtd: qtd,
+      pp: pp,
+      credor: credor,
+    }
+
+    arrauObjetos.push(...peca, dados)
+
+    localStorage.setItem("peca", JSON.stringify(arrauObjetos));
+    setPeca(arrauObjetos)
+
+
+  }
+
   return (
 
 
-    <>
-    
+
     <s.ContainerGeral>
-    
-          <s.Titulo>Adcionar nova peça: </s.Titulo>
-        <s.Formulario>
-        <s.Etiqueta >Peça Nova : </s.Etiqueta>
-        <s.Inovos className="novos"></s.Inovos>
-        <s.Etiqueta >Preço: </s.Etiqueta>
-        <s.Inovos className="novos"></s.Inovos>
-        <s.Etiqueta >Qt. Parcelas:</s.Etiqueta>
-        <s.Inovos className="novos"></s.Inovos>
-        <s.Etiqueta >Credor: </s.Etiqueta>
-        <s.Inovos className="novos"></s.Inovos>
-        <s.Gravar>Salvar</s.Gravar>
-        </s.Formulario>
-        
-        <br></br> <br></br>  <br></br> <hr></hr> <br></br>
-            
 
-            <h2>Coisas Do Meu quarto</h2>
-            <s.Tabela>
-                {
-                    ['Peça', 'Preço', 'Qtd. Parcelas', 'Parcelas Pagas', 'Credor'].map((elemento,index ) => (
-                        <s.CabecalhoTh>{elemento}</s.CabecalhoTh>
-                    ))
-                }
+      <s.Titulo>Adcionar nova peça: </s.Titulo>
 
-                {
-                peca.map((l)=>(
-                        <s.LinhaTr>
-                             <s.ColunaTd1 class="decor">{l}</s.ColunaTd1> <s.ColunaTd>
-                                 <s.Entradas></s.Entradas></s.ColunaTd> <s.ColunaTd>
-                                <s.Entradas maxLength={2} ></s.Entradas></s.ColunaTd> <s.ColunaTd>
-                                <s.Entradas maxLength={5}></s.Entradas></s.ColunaTd> <s.ColunaTd>
-                                <s.Entradas maxLength={10}></s.Entradas>
-                        </s.ColunaTd>
-                        </s.LinhaTr>
-                    ))
-             }
-             
-               
+      <s.Etiqueta >Peça Nova : </s.Etiqueta>
+      <s.Inovos id="npeca"   ></s.Inovos>
 
-            </s.Tabela>
+      <s.Etiqueta >Preço: </s.Etiqueta>
+      <s.Inovos id="npreco"></s.Inovos>
 
-             
-        </s.ContainerGeral>
-    </>
+      <s.Etiqueta >Qt. Parcelas:</s.Etiqueta>
+      <s.Inovos id="qtd"></s.Inovos>
+
+      <s.Etiqueta >Parcelas Pagas: </s.Etiqueta>
+      <s.Inovos id="pp"></s.Inovos>
+
+      <s.Etiqueta >Credor: </s.Etiqueta>
+      <s.Inovos id="credor"></s.Inovos>
+
+      <s.Gravar onClick={() => armazenar()}>Salvar</s.Gravar>
+
+      <br></br> <br></br>  <br></br> <hr></hr> <br></br>
+
+      <h2>Coisas Do Meu quarto</h2>
+      <s.Tabela>
+        {
+          ['Peça', 'Preço', 'Qtd. Parcelas', 'Parcelas Pagas', 'Credor', 'excluir'].map((elemento, index) => (
+            <s.CabecalhoTh>{elemento}</s.CabecalhoTh>
+          ))
+        }
+
+
+        {
+
+          peca?.map((e, i) => (
+            <>
+              <s.LinhaTr>
+
+                <s.ColunaTd1> {e.npeca} </s.ColunaTd1>
+
+                <s.ColunaTd >
+                  <s.Input value={e.npreco} />
+                </s.ColunaTd>
+
+                <s.ColunaTd >
+                  <s.Input maxLength={2} value={e.qtd} />
+                </s.ColunaTd>
+
+                <s.ColunaTd >
+                  <s.Input maxLength={5} value={e.pp} />
+                </s.ColunaTd>
+
+                <s.ColunaTd >
+                  <s.Input maxLength={10} value={e.credor} />
+                </s.ColunaTd>
+
+
+                <s.ColunaTd>
+                  <s.Botaoexcluir onClick={() => excluir()} />
+                </s.ColunaTd>
+
+              </s.LinhaTr>
+
+            </>
+          )
+          )
+
+
+        }
+
+
+      </s.Tabela>
+
+    </s.ContainerGeral>
+
   );
 }
 
