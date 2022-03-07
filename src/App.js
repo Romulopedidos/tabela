@@ -18,7 +18,7 @@ export default function TabelaItens() {
     <>
     
     <s.ContainerGeral>
-
+    
           <s.Titulo>Adcionar nova peça: </s.Titulo>
         <s.Formulario>
         <s.Etiqueta >Peça Nova : </s.Etiqueta>
