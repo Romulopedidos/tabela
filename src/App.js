@@ -14,10 +14,13 @@ export default function TabelaItens() {
   
   return (
 
-    
+
     <>
     
     <s.ContainerGeral>
+
+
+      
           
           <s.Titulo>Adcionar nova peça: </s.Titulo>
         <s.Formulario>
