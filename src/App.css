@@ -1,0 +1,78 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+table , tr,td, th {
+  width: 200px;
+  border: black solid 1px;
+  table-layout: fixed;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0px , 0px;
+  font-size: 21px;
+  
+
+}   
+
+input{
+  width: 200px;
+  height: 37px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h1 {
+  text-indent: 73px;
+}
+
+th{
+  background-color: rgba(3, 3, 247, 0.397);
+}
+.decor {
+  background-color: rgba(3, 3, 247, 0.411);
+  
+}
+
+tr:nth-child(even){
+  background-color: rgba(227, 241, 26, 0.068);
+}
+
+button {
+      width: 100px;
+      height: 330px;
+      position: absolute;
+      left: 1000px;
+      top: 200px;
+      border-radius: 100px;
+      background-color: rgba(3, 3, 247, 0.411);
+      color: white;
+      font-size: 30px;
+      border: none;
+}
+
+button:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+
+
+/* ESTILO DO COMPONENTE CAPTURA  */
+
+form{
+  margin: 20px;
+}
+
+label {
+  padding: 10px;
+  
+}
+
+.novos {
+  width: 110px;
+   height: auto;
+   font-size: 17px;
+}
