@@ -10,9 +10,9 @@ export default function TabelaItens() {
 
   const [peca, setPeca] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     setPeca(JSON.parse(dadosSalvo))
-  },[])
+  }, [])
 
 
 
@@ -26,11 +26,11 @@ export default function TabelaItens() {
     let pp = document.getElementById("pp").value;
     let credor = document.getElementById("credor").value;
 
-  
+
 
     let arrauObjetos = [];
     let dados = {
-      
+
       key: gerakey(),
       npeca: npeca,
       npreco: npreco,
@@ -40,7 +40,7 @@ export default function TabelaItens() {
     }
 
 
-    arrauObjetos.push( ...peca, dados)
+    arrauObjetos.push(...peca, dados)
 
     console.log(arrauObjetos)
 
@@ -52,22 +52,46 @@ export default function TabelaItens() {
   }
 
 
-  function gerakey(){
-      let min = Math.ceil(0);
-     let max = Math.floor(1000);
-      
-      return Math.floor(Math.random() * (max - min)) + min;
+  function gerakey() {
+    let min = Math.ceil(0);
+    let max = Math.floor(1000);
+
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  console.log(peca)
+
+
+
+  function excluir(key) {
+
+    console.log(key)
+
+    let novoArray = []
+
+    for (let i = 0; i < peca.length; i++) {
+
+      if(key !== peca[i].key){
+
+        novoArray.push(peca[i])
+
+      }
+
     }
-  
-    console.log(peca)
+    localStorage.setItem("peca", JSON.stringify(novoArray));
+    setPeca(novoArray)
 
-
-    
-  function excluir() {
-    setPeca([])
-    
 
   }
+
+  function excluirTudo() {
+
+    localStorage.removeItem('peca')
+    setPeca([])
+
+
+  }
+
   return (
 
 
@@ -105,52 +129,52 @@ export default function TabelaItens() {
         }
 
 
-                    {
+        {
 
-                    peca?.map((e, i) => (
-                      <>
-                        <s.LinhaTr>
+          peca?.map((e, i) => (
+            <>
+              <s.LinhaTr>
 
-                          <s.ColunaTd1> {e.npeca} </s.ColunaTd1>
-
-
-
-                          <s.ColunaTd >
-                            <s.Input value={e.npreco} />
-                          </s.ColunaTd>
+                <s.ColunaTd1> {e.npeca} </s.ColunaTd1>
 
 
 
-
-                          <s.ColunaTd >
-                            <s.Input maxLength={2} value={e.qtd} />
-                          </s.ColunaTd>
-
-
-
-                          <s.ColunaTd >
-                            <s.Input maxLength={5} value={e.pp} />
-                          </s.ColunaTd>
+                <s.ColunaTd >
+                  <s.Input value={e.npreco} />
+                </s.ColunaTd>
 
 
 
-                          <s.ColunaTd >
-                            <s.Input maxLength={10} value={e.credor} />
-                          </s.ColunaTd>
+
+                <s.ColunaTd >
+                  <s.Input maxLength={2} value={e.qtd} />
+                </s.ColunaTd>
 
 
-                          <s.ColunaTd>
-                            <s.Botaoexcluir onClick={() => excluir()} />
-                          </s.ColunaTd>
 
-                        </s.LinhaTr>
-
-                      </>
-                    )
-                    )
+                <s.ColunaTd >
+                  <s.Input maxLength={5} value={e.pp} />
+                </s.ColunaTd>
 
 
-                    }
+
+                <s.ColunaTd >
+                  <s.Input maxLength={10} value={e.credor} />
+                </s.ColunaTd>
+
+
+                <s.ColunaTd>
+                  <s.Botaoexcluir onClick={() => excluir(e.key)} />
+                </s.ColunaTd>
+
+              </s.LinhaTr>
+
+            </>
+          )
+          )
+
+
+        }
 
 
       </s.Tabela>
