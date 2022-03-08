@@ -62,15 +62,17 @@ export default function TabelaItens() {
   console.log(peca)
 
 
-
+  //função que exclui o item selecionado!
   function excluir(key) {
-
+    //Key recebida quando clico no botão
     console.log(key)
 
+      //array vazio que vai receber o push e vai substituir o array original!
     let novoArray = []
 
+    // for que percorre a state peca que é u m ARRAY!!!!  
     for (let i = 0; i < peca.length; i++) {
-
+      // verificação : se for diferente do selecionado > entra! se não for, nada acontece!
       if(key !== peca[i].key){
 
         novoArray.push(peca[i])
@@ -78,7 +80,10 @@ export default function TabelaItens() {
       }
 
     }
+
+    //substituindo o novo ARRAY no local storage
     localStorage.setItem("peca", JSON.stringify(novoArray));
+    //substituindo a state com o novo array!
     setPeca(novoArray)
 
 
