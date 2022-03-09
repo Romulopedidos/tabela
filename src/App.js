@@ -4,7 +4,7 @@ import * as s from './Styled'
 
 export default function TabelaItens() {
 
-
+  let cabeca =  ['Peça', 'Preço', 'Qtd. Parcelas', 'Parcelas Pagas', 'Credor', 'excluir']
   let dadosSalvo = localStorage.getItem('peca');
   console.log(dadosSalvo)
 
@@ -26,7 +26,7 @@ export default function TabelaItens() {
     let pp = document.getElementById("pp").value;
     let credor = document.getElementById("credor").value;
 
-
+ 
 
     let arrauObjetos = [];
     let dados = {
@@ -48,8 +48,16 @@ export default function TabelaItens() {
 
     setPeca(arrauObjetos)
 
-
+    document.getElementById("npeca").value= " "
+    document.getElementById("npreco").value = " "
+    document.getElementById("qtd").value= " "
+    document.getElementById("pp").value= " "
+    document.getElementById("credor").value = " "
+    
+    
+      
   }
+  
 
 
   function gerakey() {
@@ -93,17 +101,20 @@ export default function TabelaItens() {
 
     localStorage.removeItem('peca')
     setPeca([])
-
+   
 
   }
+
+  
 
   return (
 
 
 
 
-    <s.ContainerGeral>
-
+    <s.ContainerGeral >
+       
+      
       <s.Titulo>Adcionar nova peça: </s.Titulo>
 
       <s.Etiqueta >Peça Nova : </s.Etiqueta>
@@ -115,20 +126,32 @@ export default function TabelaItens() {
       <s.Etiqueta >Qt. Parcelas:</s.Etiqueta>
       <s.Inovos id="qtd" maxLength={2}></s.Inovos>
 
-      <s.Etiqueta >Parcelas Pagas: </s.Etiqueta>
+      <s.Etiqueta >Parcelas agas: </s.Etiqueta>
       <s.Inovos id="pp" maxLength={5}></s.Inovos>
 
       <s.Etiqueta >Credor: </s.Etiqueta>
       <s.Inovos id="credor" maxLength={10}></s.Inovos>
 
       <s.Gravar onClick={() => armazenar()}>Salvar</s.Gravar>
+      <s.Gravar onClick={() => excluirTudo()}>Excluir Tudo</s.Gravar>
 
-      <br></br> <br></br>  <br></br> <hr></hr> <br></br>
+      <br></br> <br></br>  <br></br> 
+
+      <s.Container id="cont">
+      {
+        peca?.length > 0  && (
+
+          <>
+          
+          <s.Hr id="lin"></s.Hr>
+       <br></br>
+
+      
 
       <h2>Coisas Do Meu quarto</h2>
       <s.Tabela>
         {
-          ['Peça', 'Preço', 'Qtd. Parcelas', 'Parcelas Pagas', 'Credor', 'excluir'].map((elemento, index) => (
+          cabeca.map((elemento, index) => (
             <s.CabecalhoTh>{elemento}</s.CabecalhoTh>
           ))
         }
@@ -169,7 +192,7 @@ export default function TabelaItens() {
 
 
                 <s.ColunaTd>
-                  <s.Botaoexcluir onClick={() => excluir(e.key)} />
+                  <s.BotaoExcluir onClick={() => excluir(e.key)} >Excluir</s.BotaoExcluir>
                 </s.ColunaTd>
 
               </s.LinhaTr>
@@ -183,7 +206,12 @@ export default function TabelaItens() {
 
 
       </s.Tabela>
-
+          
+          </>
+        )
+      }
+     
+      </s.Container>
     </s.ContainerGeral>
 
   );
