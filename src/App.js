@@ -163,7 +163,7 @@ export default function TabelaItens() {
             <>
               <s.LinhaTr>
 
-                <s.ColunaTd1> {e.npeca} </s.ColunaTd1>
+                <s.ColunaTd1> {`Nome ${e.npeca}`} </s.ColunaTd1>
 
 
 
