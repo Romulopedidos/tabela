@@ -82,7 +82,8 @@ export default function TabelaItens() {
     for (let i = 0; i < peca.length; i++) {
       // verificação : se for diferente do selecionado > entra! se não for, nada acontece!
       if(key !== peca[i].key){
-
+        
+                               
         novoArray.push(peca[i])
 
       }
