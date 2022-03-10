@@ -15,6 +15,7 @@ function resposta(dados){
 }
     treino.map( (e,i) =>
     resposta(e)
+    
     )
   
 
