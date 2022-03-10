@@ -1,7 +1,9 @@
 
 
 let treino = [
-    { 'key': 't', 'nome': 'kleberson', 'idade': 29 , "calcado" : 'calcado'},     { 'key': '20', 'nome': 'romulo', 'idade': 50 },     { 'key': '5', 'nome': 'ingo', 'idade': 1021 },
+    { 'key': 't', 'nome': 'kleberson', 'idade': 29 , "calcado" : 'calcado'},   
+      { 'key': '20', 'nome': 'romulo', 'idade': 50 },    
+       { 'key': '5', 'nome': 'ingo', 'idade': 1021 },
     
     
 ];

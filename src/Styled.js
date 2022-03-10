@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const ContainerGeral = styled.div`
     margin: 0;
   box-sizing: border-box;
@@ -10,6 +12,10 @@ export const ContainerGeral = styled.div`
       
     }
   `;
+export const Selecao = styled.select`
+    display: block;
+
+`;
 
 export const Container = styled.div`
       

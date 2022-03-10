@@ -104,6 +104,11 @@ export default function TabelaItens() {
    
 
   }
+  function mudaCor(){
+    console.log("treinar +")
+     
+    
+  }
 
   
 
@@ -112,8 +117,11 @@ export default function TabelaItens() {
 
 
 
-    <s.ContainerGeral >
+    <s.ContainerGeral id="divtest" >
+       <s.Selecao id="sel" onChange={mudaCor()}>
+         {["Preciso", "Estudar", "Mais", "Porquê" , "só" , "Pressão", "kkkk", ].map((e)=>(<option>{e}</option>))}
        
+       </s.Selecao>
       
       <s.Titulo>Adcionar nova peça: </s.Titulo>
 
