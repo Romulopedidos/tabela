@@ -71,7 +71,7 @@ export default function TabelaItens() {
 
 
   //função que exclui o item selecionado!
-  function excluir(key) {
+  function excluir(key) { 
     //Key recebida quando clico no botão
     console.log(key)
 
